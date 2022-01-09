@@ -24,6 +24,9 @@ class Upadapter(val listener:Uplisten) :
             itemView.setOnClickListener{
                 listener.onclicked(foodPhoto)
             }
+            binding.setReminder.setOnClickListener{
+              listener.timerupcoming(foodPhoto)
+            }
         }
     }
 
@@ -64,4 +67,5 @@ class Upadapter(val listener:Uplisten) :
 interface Uplisten
 {
     fun onclicked(hit:ContestsItem)
+     fun timerupcoming(foodPhoto: ContestsItem)
 }

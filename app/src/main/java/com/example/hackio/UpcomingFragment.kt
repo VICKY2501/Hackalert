@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
@@ -54,6 +55,10 @@ class UpcomingFragment : Fragment(),Uplisten {
             putSerializable("contest", hit)
         }
         findNavController().navigate(R.id.action_upcomingFragment_to_displayFragment, bundle)
+    }
+
+    override fun timerupcoming(foodPhoto: ContestsItem) {
+        Toast.makeText(activity as AppCompatActivity, "Please set valid time", Toast.LENGTH_SHORT).show()
     }
 
 }

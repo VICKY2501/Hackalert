@@ -1,10 +1,13 @@
 package com.example.hackio
 
+import android.content.Intent
 import android.os.Bundle
+import android.provider.AlarmClock
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.NavHostFragment
@@ -12,6 +15,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.hackio.databinding.FragmentOngoingBinding
 import com.example.hackio.databinding.FragmentUpcomingBinding
+import kotlinx.android.synthetic.main.fragment_ongoing.*
 
 
 class OngoingFragment : Fragment(),Onlisten {
@@ -36,6 +40,7 @@ class OngoingFragment : Fragment(),Onlisten {
         return binding.root
     }
 
+
     companion object {
 
         @JvmStatic
@@ -53,4 +58,9 @@ class OngoingFragment : Fragment(),Onlisten {
         }
         findNavController().navigate(R.id.action_ongoingFragment_to_displayFragment, bundle)
     }
+
+    override fun timerStart(foodPhoto: ContestsItem) {
+        Toast.makeText(activity as AppCompatActivity, "Please set valid time", Toast.LENGTH_SHORT).show()
+    }
+
 }
