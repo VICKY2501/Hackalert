@@ -19,6 +19,7 @@
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:layout_width="60dp"
+            android:id="@+id/mailUserPhoto"
             android:layout_height="60dp"
             android:src="@drawable/profile_img"
             />
@@ -27,6 +28,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingTop="8dp"
+            android:id="@+id/mailUserName"
             android:textAppearance="@style/TextAppearance.AppCompat.Headline"
             android:textColor="?attr/colorOnPrimary"
             android:textStyle="bold"
@@ -38,7 +40,7 @@
             >
 
             <TextView
-                android:id="@+id/textView"
+                android:id="@+id/mailUserID"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
@@ -52,7 +54,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginStart="15dp"
-                android:layout_toEndOf="@+id/textView"
+                android:layout_toEndOf="@+id/mailUserID"
                 android:src="@drawable/ic_email_24" />
 
         </RelativeLayout>

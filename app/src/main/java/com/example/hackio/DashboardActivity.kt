@@ -1,11 +1,14 @@
 package com.example.hackio
 
+import android.content.DialogInterface
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.annotation.Nullable
 import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
@@ -42,11 +45,47 @@ class DashboardActivity : AppCompatActivity() {
             when (it.itemId) {
                 R.id.nav_home -> {
                     Toast.makeText(this, "nav home me ho", Toast.LENGTH_SHORT).show()
-                    loggout()
+                    val alterboxbuilder = AlertDialog.Builder(this)
+                    alterboxbuilder.setTitle("Logout")
+                    alterboxbuilder.setMessage("Do you want to Logout?")
+                    alterboxbuilder.setIcon(R.drawable.ic_logout)
+                    alterboxbuilder.setPositiveButton("YES",){dialogInterface, which ->
+                        loggout()
+                    }
+                    alterboxbuilder.setNeutralButton("Cancel"){dialogInterface , which ->
+                        Toast.makeText(applicationContext,"Canceled",Toast.LENGTH_LONG).show()
+                        drawer.closeDrawer(GravityCompat.START)
+                    }
+                    val alertd : AlertDialog = alterboxbuilder.create()
+                    alertd.show()
+
                 }
                 R.id.akshay -> {
-                    Toast.makeText(this, "akshayyyy", Toast.LENGTH_SHORT).show()
+
+                    val viewIntent = Intent(
+                        "android.intent.action.VIEW",
+                        Uri.parse("https://www.linkedin.com/in/-akshay-kumar-/")
+                    )
+                    startActivity(viewIntent)
                 }
+                R.id.kanp -> {
+
+                    val viewIntent = Intent(
+                        "android.intent.action.VIEW",
+                        Uri.parse("https://www.linkedin.com/in/kanupriya--jain/")
+                    )
+                    startActivity(viewIntent)
+                }
+                R.id.vbh -> {
+
+                    val viewIntent = Intent(
+                        "android.intent.action.VIEW",
+                        Uri.parse("https://www.linkedin.com/in/vaibhav-gupta-451825200")
+                    )
+                    startActivity(viewIntent)
+                }
+
+
             }
             true
         }
