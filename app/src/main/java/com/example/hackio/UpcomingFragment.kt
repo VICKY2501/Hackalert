@@ -1,6 +1,7 @@
 package com.example.hackio
 
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -11,6 +12,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.example.hackio.databinding.FragmentUpcomingBinding
+import android.provider.AlarmClock
+import android.provider.CalendarContract
+import androidx.annotation.RequiresApi
+import java.util.*
 
 
 class UpcomingFragment : Fragment(),Uplisten {
@@ -59,8 +64,29 @@ class UpcomingFragment : Fragment(),Uplisten {
         intent.putExtra("website", hit.url)
         startActivity(intent)
     }
-
+    @RequiresApi(Build.VERSION_CODES.S)
     override fun timerupcoming(foodPhoto: ContestsItem) {
-        Toast.makeText(activity as AppCompatActivity, "Please set valid time", Toast.LENGTH_SHORT).show()
+        val year:String = foodPhoto.start_time.substring(0,4)
+        val month:String =foodPhoto.start_time.substring(5,7)
+        val date:String = foodPhoto.start_time.substring(8,10)
+        val hour:String =foodPhoto.start_time.substring(11,13)
+        val minutes:String =foodPhoto.start_time.substring(14,16)
+        val year2:String = foodPhoto.end_time.substring(0,4)
+        val month2:String =foodPhoto.end_time.substring(5,7)
+        val date2:String = foodPhoto.end_time.substring(8,10)
+        val hour2:String =foodPhoto.end_time.substring(11,13)
+        val minutes2:String =foodPhoto.end_time.substring(14,16)
+        val beginCal: Calendar = Calendar.getInstance()
+        beginCal.set(year.toInt(),month.toInt(),date.toInt(),hour.toInt(),minutes.toInt())
+        val endcal:Calendar= Calendar.getInstance()
+        endcal.set(year2.toInt(),month2.toInt(),date2.toInt(),hour2.toInt(),minutes2.toInt())
+        val intent = Intent(Intent.ACTION_INSERT)
+        intent.data = CalendarContract.Events.CONTENT_URI;
+        intent.putExtra(CalendarContract.Events.TITLE,foodPhoto.name);
+        intent.putExtra(CalendarContract.Events.EVENT_LOCATION, foodPhoto.site);
+        intent.putExtra(CalendarContract.Events.DESCRIPTION, foodPhoto.in_24_hours);
+        intent.putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, beginCal.timeInMillis)
+        intent.putExtra(CalendarContract.EXTRA_EVENT_END_TIME, endcal.timeInMillis);
+        startActivity(intent);
     }
 }
