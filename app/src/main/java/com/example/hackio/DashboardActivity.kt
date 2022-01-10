@@ -1,11 +1,15 @@
 package com.example.hackio
 
+import android.content.DialogInterface
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.MenuItem
+import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.Nullable
 import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
@@ -13,17 +17,21 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import androidx.viewpager.widget.ViewPager
+import com.bumptech.glide.Glide
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
+import com.google.android.material.navigation.NavigationView
 import com.google.android.material.tabs.TabLayout
 import com.google.firebase.auth.FirebaseAuth
+import de.hdodenhof.circleimageview.CircleImageView
 import kotlinx.android.synthetic.main.activity_dashboard.*
 
 //import kotlinx.android.synthetic.main.activity_dashboard.*
 
 class DashboardActivity : AppCompatActivity() {
 
+    private lateinit var firebaseAuth: FirebaseAuth
     // declare the GoogleSignInClient
     lateinit var mGoogleSignInClient: GoogleSignInClient
 
@@ -35,18 +43,80 @@ class DashboardActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_dashboard)
 
-
+        firebaseAuth = FirebaseAuth.getInstance()
+        val currentUser = firebaseAuth.currentUser
         setSupportActionBar(findViewById(R.id.toolbar))
+        val navigationview : NavigationView = findViewById(R.id.navigation_view)
+        val hView = navigationview.getHeaderView(0)
+        val textViewName = hView.findViewById(R.id.mailUserName) as TextView
+        val textViewEmail = hView.findViewById(R.id.mailUserID) as TextView
+        val imgview = hView.findViewById(R.id.mailUserPhoto) as CircleImageView
+        imgview.setImageResource(R.drawable.ic_menu_gallery)
+
+        textViewName.setText(currentUser?.displayName.toString())
+        textViewEmail.setText(currentUser?.email.toString())
+        Glide.with(this).load(currentUser?.photoUrl).into(imgview);
+
 
         navigation_view.setNavigationItemSelectedListener{
             when (it.itemId) {
                 R.id.nav_home -> {
                     Toast.makeText(this, "nav home me ho", Toast.LENGTH_SHORT).show()
-                    loggout()
+                    val alterboxbuilder = AlertDialog.Builder(this)
+                    alterboxbuilder.setTitle("Logout")
+                    alterboxbuilder.setMessage("Do you want to Logout?")
+                    alterboxbuilder.setIcon(R.drawable.ic_logout)
+                    alterboxbuilder.setPositiveButton("YES",){dialogInterface, which ->
+                        loggout()
+                    }
+                    alterboxbuilder.setNeutralButton("Cancel"){dialogInterface , which ->
+                        Toast.makeText(applicationContext,"Canceled",Toast.LENGTH_LONG).show()
+                        drawer.closeDrawer(GravityCompat.START)
+                    }
+                    val alertd : AlertDialog = alterboxbuilder.create()
+                    alertd.show()
+
+                }
+                R.id.nav_slideshow->{
+                    val sharingIntent = Intent(Intent.ACTION_SEND)
+                    // type of the content to be shared
+                    sharingIntent.type = "text/plain"
+                    // Body of the content
+                    val shareBody = "Join Hackio! It's a fast, simple, and secure app we can use to keep a track of all the ongoing and upcoming coding related contests and hackathons for free. Share it with your friends Get it at https://github.com/akshaykumar89/Hackalert/tree/master"
+                    // subject of the content. you can share anything
+                    val shareSubject = "Hackio"
+                    // passing body of the content
+                    sharingIntent.putExtra(Intent.EXTRA_TEXT, shareBody)
+                    // passing subject of the content
+                    sharingIntent.putExtra(Intent.EXTRA_SUBJECT, shareSubject)
+                    startActivity(Intent.createChooser(sharingIntent, "Share using"))
                 }
                 R.id.akshay -> {
-                    Toast.makeText(this, "akshayyyy", Toast.LENGTH_SHORT).show()
+
+                    val viewIntent = Intent(
+                        "android.intent.action.VIEW",
+                        Uri.parse("https://www.linkedin.com/in/-akshay-kumar-/")
+                    )
+                    startActivity(viewIntent)
                 }
+                R.id.kanp -> {
+
+                    val viewIntent = Intent(
+                        "android.intent.action.VIEW",
+                        Uri.parse("https://www.linkedin.com/in/kanupriya--jain/")
+                    )
+                    startActivity(viewIntent)
+                }
+                R.id.vbh -> {
+
+                    val viewIntent = Intent(
+                        "android.intent.action.VIEW",
+                        Uri.parse("https://www.linkedin.com/in/vaibhav-gupta-451825200")
+                    )
+                    startActivity(viewIntent)
+                }
+
+
             }
             true
         }

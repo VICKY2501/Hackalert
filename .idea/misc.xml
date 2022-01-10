@@ -3,17 +3,24 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Hackalert/app/src/main/res/layout/activity_main.xml" value="0.17255434782608695" />
-        <entry key="..\:/Hackalert/app/src/main/res/layout/activity_wbview.xml" value="0.11927083333333334" />
-        <entry key="..\:/Hackalert/app/src/main/res/layout/aftdata.xml" value="0.17889492753623187" />
-        <entry key="..\:/Hackalert/app/src/main/res/layout/fragment_display.xml" value="0.17889492753623187" />
-        <entry key="..\:/Hackalert/app/src/main/res/layout/nav_header_main.xml" value="0.1265625" />
-        <entry key="..\:/Hackalert/app/src/main/res/layout/updata.xml" value="0.17889492753623187" />
         <entry key="..\:/Hackio/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Hackio/app/src/main/res/layout/aftdata.xml" value="0.1634963768115942" />
         <entry key="..\:/Hackio/app/src/main/res/layout/fragment_firstfrag.xml" value="0.1" />
         <entry key="..\:/Hackio/app/src/main/res/layout/listview.xml" value="0.1634963768115942" />
         <entry key="..\:/Hackio/app/src/main/res/layout/updata.xml" value="0.1634963768115942" />
+        <entry key="..\:/Users/Akshay/StudioProjects/Hackalert/app/src/main/res/drawable/ic_logout.xml" value="0.21614583333333334" />
+        <entry key="..\:/Users/Akshay/StudioProjects/Hackalert/app/src/main/res/drawable/ic_menu_camera.xml" value="0.21614583333333334" />
+        <entry key="..\:/Users/Akshay/StudioProjects/Hackalert/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Users/Akshay/StudioProjects/Hackalert/app/src/main/res/layout/aftdata.xml" value="0.1" />
+        <entry key="..\:/Users/Akshay/StudioProjects/Hackalert/app/src/main/res/layout/dashboard.xml" value="0.1" />
+        <entry key="..\:/Users/Akshay/StudioProjects/Hackalert/app/src/main/res/layout/fragment_display.xml" value="0.2" />
+        <entry key="..\:/Users/Akshay/StudioProjects/Hackalert/app/src/main/res/layout/fragment_firstfrag.xml" value="0.1" />
+        <entry key="..\:/Users/Akshay/StudioProjects/Hackalert/app/src/main/res/layout/fragment_ongoing.xml" value="0.1" />
+        <entry key="..\:/Users/Akshay/StudioProjects/Hackalert/app/src/main/res/layout/fragment_upcoming.xml" value="0.1" />
+        <entry key="..\:/Users/Akshay/StudioProjects/Hackalert/app/src/main/res/layout/listview.xml" value="0.1" />
+        <entry key="..\:/Users/Akshay/StudioProjects/Hackalert/app/src/main/res/layout/nav_header_main.xml" value="0.1" />
+        <entry key="..\:/Users/Akshay/StudioProjects/Hackalert/app/src/main/res/layout/updata.xml" value="0.3333333333333333" />
+        <entry key="..\:/Users/Akshay/StudioProjects/Hackalert/app/src/main/res/menu/main_menu.xml" value="0.1" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/Hackio/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.21614583333333334" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/Hackio/app/src/main/res/drawable/ic_baseline_add_alarm_24.xml" value="0.2128205128205128" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/Hackio/app/src/main/res/drawable/ic_launcher_background.xml" value="0.21614583333333334" />
@@ -43,7 +50,7 @@
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
