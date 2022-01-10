@@ -5,6 +5,7 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.view.MenuItem
+import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.Nullable
 import androidx.appcompat.app.ActionBarDrawerToggle
@@ -16,17 +17,21 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import androidx.viewpager.widget.ViewPager
+import com.bumptech.glide.Glide
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
+import com.google.android.material.navigation.NavigationView
 import com.google.android.material.tabs.TabLayout
 import com.google.firebase.auth.FirebaseAuth
+import de.hdodenhof.circleimageview.CircleImageView
 import kotlinx.android.synthetic.main.activity_dashboard.*
 
 //import kotlinx.android.synthetic.main.activity_dashboard.*
 
 class DashboardActivity : AppCompatActivity() {
 
+    private lateinit var firebaseAuth: FirebaseAuth
     // declare the GoogleSignInClient
     lateinit var mGoogleSignInClient: GoogleSignInClient
 
@@ -38,8 +43,20 @@ class DashboardActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_dashboard)
 
-
+        firebaseAuth = FirebaseAuth.getInstance()
+        val currentUser = firebaseAuth.currentUser
         setSupportActionBar(findViewById(R.id.toolbar))
+        val navigationview : NavigationView = findViewById(R.id.navigation_view)
+        val hView = navigationview.getHeaderView(0)
+        val textViewName = hView.findViewById(R.id.mailUserName) as TextView
+        val textViewEmail = hView.findViewById(R.id.mailUserID) as TextView
+        val imgview = hView.findViewById(R.id.mailUserPhoto) as CircleImageView
+        imgview.setImageResource(R.drawable.ic_menu_gallery)
+
+        textViewName.setText(currentUser?.displayName.toString())
+        textViewEmail.setText(currentUser?.email.toString())
+        Glide.with(this).load(currentUser?.photoUrl).into(imgview);
+
 
         navigation_view.setNavigationItemSelectedListener{
             when (it.itemId) {
