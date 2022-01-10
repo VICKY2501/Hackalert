@@ -3,8 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Hackalert/app/src/main/res/layout/activity_main.xml" value="0.17255434782608695" />
         <entry key="..\:/Hackalert/app/src/main/res/layout/aftdata.xml" value="0.17889492753623187" />
         <entry key="..\:/Hackalert/app/src/main/res/layout/fragment_display.xml" value="0.17889492753623187" />
+        <entry key="..\:/Hackalert/app/src/main/res/layout/nav_header_main.xml" value="0.1265625" />
         <entry key="..\:/Hackalert/app/src/main/res/layout/updata.xml" value="0.17889492753623187" />
         <entry key="..\:/Hackio/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Hackio/app/src/main/res/layout/aftdata.xml" value="0.1634963768115942" />

@@ -1,5 +1,6 @@
 package com.example.hackio
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -54,11 +55,12 @@ class UpcomingFragment : Fragment(),Uplisten {
         val bundle = Bundle().apply {
             putSerializable("contest", hit)
         }
-        findNavController().navigate(R.id.action_upcomingFragment_to_displayFragment, bundle)
+        val intent = Intent(activity, MainActivity::class.java)
+        intent.putExtra("website",hit.url)
+        startActivity(intent)
     }
 
     override fun timerupcoming(foodPhoto: ContestsItem) {
         Toast.makeText(activity as AppCompatActivity, "Please set valid time", Toast.LENGTH_SHORT).show()
     }
-
 }

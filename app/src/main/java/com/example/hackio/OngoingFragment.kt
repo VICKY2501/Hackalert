@@ -9,8 +9,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.Navigation
+import androidx.navigation.Navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.fragment.NavHostFragment.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.hackio.databinding.FragmentOngoingBinding
@@ -56,7 +60,9 @@ class OngoingFragment : Fragment(),Onlisten {
         val bundle = Bundle().apply {
             putSerializable("contest", hit)
         }
-        findNavController().navigate(R.id.action_ongoingFragment_to_displayFragment, bundle)
+        val intent = Intent(activity, MainActivity::class.java)
+        intent.putExtra("website",hit.url)
+        startActivity(intent)
     }
 
     override fun timerStart(foodPhoto: ContestsItem) {
