@@ -55,8 +55,8 @@ class UpcomingFragment : Fragment(),Uplisten {
         val bundle = Bundle().apply {
             putSerializable("contest", hit)
         }
-        val intent = Intent(activity, MainActivity::class.java)
-        intent.putExtra("website",hit.url)
+        val intent = Intent(activity, Wbview::class.java)
+        intent.putExtra("website", hit.url)
         startActivity(intent)
     }
 

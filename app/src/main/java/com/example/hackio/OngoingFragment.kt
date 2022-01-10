@@ -60,13 +60,12 @@ class OngoingFragment : Fragment(),Onlisten {
         val bundle = Bundle().apply {
             putSerializable("contest", hit)
         }
-        val intent = Intent(activity, MainActivity::class.java)
-        intent.putExtra("website",hit.url)
+        val intent = Intent(activity, Wbview::class.java)
+        intent.putExtra("website", hit.url)
         startActivity(intent)
     }
 
     override fun timerStart(foodPhoto: ContestsItem) {
         Toast.makeText(activity as AppCompatActivity, "Please set valid time", Toast.LENGTH_SHORT).show()
     }
-
 }

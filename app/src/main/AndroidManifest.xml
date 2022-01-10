@@ -10,8 +10,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Hackio">
-        <activity android:name=".DashboardActivity"></activity>
-        <activity android:name=".MainActivity"></activity>
+        <activity
+            android:name=".Wbview"
+            android:exported="false" />
+        <activity android:name=".DashboardActivity" />
+        <activity android:name=".MainActivity" />
         <activity
             android:name=".splashscreen"
             android:exported="true"
