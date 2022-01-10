@@ -60,6 +60,20 @@ class DashboardActivity : AppCompatActivity() {
                     alertd.show()
 
                 }
+                R.id.nav_slideshow->{
+                    val sharingIntent = Intent(Intent.ACTION_SEND)
+                    // type of the content to be shared
+                    sharingIntent.type = "text/plain"
+                    // Body of the content
+                    val shareBody = "Join Hackio! It's a fast, simple, and secure app we can use to keep a track of all the ongoing and upcoming coding related contests and hackathons for free. Share it with your friends Get it at https://github.com/akshaykumar89/Hackalert/tree/master"
+                    // subject of the content. you can share anything
+                    val shareSubject = "Hackio"
+                    // passing body of the content
+                    sharingIntent.putExtra(Intent.EXTRA_TEXT, shareBody)
+                    // passing subject of the content
+                    sharingIntent.putExtra(Intent.EXTRA_SUBJECT, shareSubject)
+                    startActivity(Intent.createChooser(sharingIntent, "Share using"))
+                }
                 R.id.akshay -> {
 
                     val viewIntent = Intent(
